@@ -1,0 +1,20 @@
+{
+    "name": "End of Year Project",
+    "version": "1.0",
+    "description": "Extension",
+    "manifest_version": 2,
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["content.js"]
+        }
+    ],
+    "browser_action": {
+        "default_popup": "popup.html",
+        "default_title": "Press"
+    },
+    "permissions": [
+        "clipboardRead",
+        "clipboardWrite" 
+    ] 
+}

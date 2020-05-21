@@ -1,0 +1,11 @@
+button{
+    height: 20px;
+    width: 100px;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 15px;
+    font-family: 'Oswald', sans-serif;
+    height: 50px;
+    cursor: pointer;
+    background-color: aquamarine;
+}
