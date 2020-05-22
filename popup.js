@@ -7,12 +7,22 @@
 const tableData = ['bool house', 'liggy', 'thoom', 'shim ravage'];
 
 document.addEventListener('DOMContentLoaded', function(){
-    document.querySelector('button').addEventListener('click', onButtonClick, false)
-    
-    function onButtonClick(){ 
-        var inputText = document.getElementById("enterField").value;
-        navigator.clipboard.writeText(inputText); //copies the value in the input field to the clipboard        
-    }
+    document.addEventListener('DOMContentLoaded', function(){
+        document.getElementById('enterButton').onclick = function () {
+            chrome.storage.sync.get('myLine', function(data){
+                alert(data.myLine);
+            });
+            // navigator.clipboard.writeText(value);
+            //copies the value in the input field to the clipboard
+        }
+        document.getElementById('save').onclick = function () {
+            var value = document.getElementById('saveLine').value;
+            chrome.storage.sync.set({'myLine': value}, function(){
+                alert('Success');
+            });
+            // alert(value);
+        }
+    })
 })
 //displays a list of the things in the array, need to make it so that the array is stored using the chrome.storage API
 function makeList(){ 
@@ -48,4 +58,4 @@ function makeTable(){
     document.body.appendChild(table);
 }
 
-makeTable();
+// makeTable();

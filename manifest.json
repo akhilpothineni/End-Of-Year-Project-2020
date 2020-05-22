@@ -1,6 +1,6 @@
 {
     "name": "End of Year Project",
-    "version": "1.0",
+    "version": "1.1",
     "description": "Extension",
     "manifest_version": 2,
     "content_scripts": [
