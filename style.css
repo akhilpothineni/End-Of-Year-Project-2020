@@ -1,18 +1,26 @@
 #boolHouse{
-    height: 20px;
+    height: 25px;
     width: 100px;
     border-radius: 8px;
-    padding: 10px;
-    font-size: 15px;
-    font-family: 'Oswald', sans-serif;
-    height: 50px;
+    padding: 5px;
+    font-size: 10px;
     cursor: pointer;
     background-color: aquamarine;
     margin-bottom: 10px;
 }
+#save{
+    height: 25px;
+    width: 100px;
+    padding: 5px;
+    border-radius: 8px;
+    font-size: 10px;
+    cursor: pointer;
+    background-color: aquamarine;
+    position: relative;    
+}
 
 #addbutton {
-    position: fixed;
+    position: relative;
     bottom: 0px;
     right: 0px; 
     border: none;
@@ -22,7 +30,7 @@
     display: inline-block;
 }
 #removebutton {
-    position: fixed;
+    position: relative;
     bottom: 0px;
     left: 0px; 
     border: none;
@@ -30,4 +38,18 @@
     font-size: 16px;
     cursor: pointer;
     display: inline-block;
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+}
+ul li {
+    cursor: pointer;
+    position: relative;
+    padding: 12px 8px 12px 40px;
+    background: #eee;
+    font-size: 13px;
+    transition: 0.2s;
+    list-style-type: none;
 }
