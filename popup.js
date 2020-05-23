@@ -24,19 +24,16 @@ document.addEventListener('DOMContentLoaded', function(){
 })
 //displays a list of the things in the array, need to make it so that the array is stored using the chrome.storage API
 function makeList(){ 
-    let listData = ['bool house', 'liggy', 'thoom', 'shim ravage'],
-    listContainer = document.createElement('div'),
-    listElement = document.createElement('ul'),
-    listLength = listData.length,
-    listItem,
-    i;
+    var listContainer = document.createElement('div');
+    var listElement = document.createElement('ul');
+    var listItem;
 
     document.getElementsByTagName('body')[0].appendChild(listContainer);
     listContainer.appendChild(listElement);
 
-    for (let i = 0; i < listLength; i++) {
+    for (let i = 0; i < tableData.length; i++) {
         listItem = document.createElement('li');
-        listItem.innerHTML = listData[i];
+        listItem.innerHTML = tableData[i];
         listElement.appendChild(listItem);        
     }
 }
