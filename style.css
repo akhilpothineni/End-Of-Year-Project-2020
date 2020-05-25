@@ -53,3 +53,12 @@ ul li {
     transition: 0.2s;
     list-style-type: none;
 }
+
+textarea{
+    font-family: 'Oswald', sans-serif;
+    color: black;
+    font-size: medium;
+    text-align: center;
+    border: none;
+    padding-top: 10px;
+}

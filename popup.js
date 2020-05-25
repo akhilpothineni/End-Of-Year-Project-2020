@@ -29,6 +29,10 @@ document.addEventListener('DOMContentLoaded', function(){
         if(e.target && e.target.nodeName == "LI"){
             console.log(e.target.id + "was clicked");
             navigator.clipboard.writeText(e.target.innerHTML);
+            document.getElementById("CopyAlert").style.display = 'inline';
+            setTimeout(function(){
+                document.getElementById("CopyAlert").style.display = 'none';
+            }, 1500);
         }
     })
 })
