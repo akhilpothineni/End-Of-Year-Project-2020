@@ -1,11 +1,10 @@
-//TODO:
-//Make either the list have no bullets and clickable
-//OR make the table clickable
-//'click' action on either should copy to the clipboard
-//Make it so that the button press takes the text in the input field and moves it into the array
-
+//ITEMS THAT RUN ONCE
 const tableData = ['bool house', 'liggy', 'thoom', 'shim ravage'];
+chrome.storage.sync.set({list:['bool house', 'liggy', 'thoom', 'shim ravage']});
+makeList();
+var lastId = 0;
 
+//Button Click Checking
 document.addEventListener('DOMContentLoaded', function(){
     document.getElementById('boolHouse').onclick = function () {
         chrome.storage.sync.get('myLine', function(data){
@@ -16,28 +15,41 @@ document.addEventListener('DOMContentLoaded', function(){
     }
     document.getElementById('save').onclick = function () {
         var value = document.getElementById('saveLine').value;
-        chrome.storage.sync.set({'myLine': value}, function(){
-            // alert('Success');
-        });
-        // alert(value);
+        if(value !== ""){
+            chrome.storage.sync.get({list:tableData}, function(data){
+                console.log(data.list);
+                data.list.push(value);
+                console.log(data.list);
+                eraseText();
+                updateList(value);
+            });
+        }
     }
+    document.getElementById("list").addEventListener("click", function(e){
+        if(e.target && e.target.nodeName == "LI"){
+            console.log(e.target.id + "was clicked");
+            navigator.clipboard.writeText(e.target.innerHTML);
+        }
+    })
 })
 //displays a list of the things in the array, need to make it so that the array is stored using the chrome.storage API
 function makeList(){ 
-    var listContainer = document.createElement('div');
-    var listElement = document.createElement('ul');
-    var listItem;
-
-    document.getElementsByTagName('body')[0].appendChild(listContainer);
-    listContainer.appendChild(listElement);
-
-    for (let i = 0; i < tableData.length; i++) {
-        listItem = document.createElement('li');
-        listItem.innerHTML = tableData[i];
-        listElement.appendChild(listItem);        
-    }
+    chrome.storage.sync.get({list:tableData}, function(data){
+        var tempList = data.list;
+        for (let i = 0; i < tempList.length; i++) {
+            listItem = document.createElement('li');
+            listItem.appendChild(document.createTextNode(tempList[i]));
+            listItem.setAttribute('id', 'listItem'+lastId);
+            lastId +=1;
+            document.getElementById('list').appendChild(listItem);
+        }
+    });
 }
-makeList();
+function updateList(addValue){
+    var listItem = document.createElement('li');
+    listItem.innerHTML = addValue;
+    document.getElementById('list').appendChild(listItem);
+}
 //similar to the function above but displays the list in the form of a table
 function makeTable(){ 
     var table = document.createElement('table');
@@ -52,5 +64,6 @@ function makeTable(){
     table.appendChild(tableBody);
     document.body.appendChild(table);
 }
-
-// makeTable();
+function eraseText() {
+    document.getElementById("saveLine").value = "";
+}
