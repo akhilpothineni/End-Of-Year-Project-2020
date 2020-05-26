@@ -1,25 +1,27 @@
 //ITEMS THAT RUN ONCE
-const tableData = ['bool house', 'liggy', 'thoom', 'shim ravage'];
-chrome.storage.sync.set({list:['bool house', 'liggy', 'thoom', 'shim ravage']});
+// const tableData = ['bool house', 'liggy', 'thoom', 'shim ravage'];
+
 makeList();
 var lastId = 0;
 
 //Button Click Checking
 document.addEventListener('DOMContentLoaded', function(){
-    document.getElementById('boolHouse').onclick = function () {
-        chrome.storage.sync.get('myLine', function(data){
-            navigator.clipboard.writeText(data.myLine);
-            // alert(data.myLine);
-        });
-        //copies the value in the input field to the clipboard
-    }
+    // document.getElementById('boolHouse').onclick = function () {
+    //     chrome.storage.sync.get('myLine', function(data){
+    //         navigator.clipboard.writeText(data.myLine);
+    //         // alert(data.myLine);
+    //     });
+    //     //copies the value in the input field to the clipboard
+    // }
     document.getElementById('save').onclick = function () {
         var value = document.getElementById('saveLine').value;
-        if(value !== ""){
-            chrome.storage.sync.get({list:tableData}, function(data){
-                console.log(data.list);
-                data.list.push(value);
-                console.log(data.list);
+        if(value !== ""){   
+            chrome.storage.sync.get({list:['bool house', 'liggy', 'thoom', 'shim ravage']}, function(data){
+                var array = data.list;
+                array.push(value);
+                chrome.storage.sync.set({list:array}, function(){
+                    console.log("added to list");
+                });
                 eraseText();
                 updateList(value);
             });
@@ -38,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function(){
 })
 //displays a list of the things in the array, need to make it so that the array is stored using the chrome.storage API
 function makeList(){ 
-    chrome.storage.sync.get({list:tableData}, function(data){
+    chrome.storage.sync.get({list:['bool house', 'liggy', 'thoom', 'shim ravage']}, function(data){
         var tempList = data.list;
         for (let i = 0; i < tempList.length; i++) {
             listItem = document.createElement('li');
