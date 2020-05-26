@@ -43,6 +43,7 @@
 ul{
     margin: 0;
     padding: 0;
+    padding-top: 3px;
 }
 ul li {
     cursor: pointer;
@@ -54,7 +55,7 @@ ul li {
     list-style-type: none;
 }
 
-textarea{
+#copyAlert{
     font-family: 'Oswald', sans-serif;
     color: black;
     font-size: medium;
