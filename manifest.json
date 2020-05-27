@@ -13,9 +13,14 @@
         "default_popup": "popup.html",
         "default_title": "Press"
     },
+    "background":{
+        "scripts": ["background.js"],
+        "persistant": false
+    },
     "permissions": [
         "clipboardRead",
         "clipboardWrite",
-        "storage" 
+        "storage",
+        "tabs" 
     ] 
 }
