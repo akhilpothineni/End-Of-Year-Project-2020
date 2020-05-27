@@ -16,7 +16,8 @@ document.addEventListener('DOMContentLoaded', function(){
     document.getElementById('save').onclick = function () {
         var value = document.getElementById('saveLine').value;
         if(value !== ""){   
-            chrome.storage.sync.get({list:['bool house', 'liggy', 'thoom', 'shim ravage']}, function(data){
+            chrome.storage.sync.get({list:['bool house', 'liggy', 'thoom', 'shim ravage', 
+            'yeah unfortunately android studio was very hard to learn, and so I could only produce a hello world main page']}, function(data){
                 var array = data.list;
                 array.push(value);
                 chrome.storage.sync.set({list:array}, function(){
@@ -40,7 +41,8 @@ document.addEventListener('DOMContentLoaded', function(){
 })
 //displays a list of the things in the array, need to make it so that the array is stored using the chrome.storage API
 function makeList(){ 
-    chrome.storage.sync.get({list:['bool house', 'liggy', 'thoom', 'shim ravage']}, function(data){
+    chrome.storage.sync.get({list:['bool house', 'liggy', 'thoom', 'shim ravage',
+    'yeah unfortunately android studio was very hard to learn, and so I could only produce a hello world main page']}, function(data){
         var tempList = data.list;
         for (let i = 0; i < tempList.length; i++) {
             listItem = document.createElement('li');
