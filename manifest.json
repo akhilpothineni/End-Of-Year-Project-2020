@@ -1,7 +1,7 @@
 {
-    "name": "End of Year Project",
-    "version": "1.1",
-    "description": "Extension",
+    "name": "EZ-Phrase",
+    "version": "1.0",
+    "description": "Pick phrases that you use most often and have them ready to be copied.",
     "manifest_version": 2,
     "content_scripts": [
         {
@@ -11,11 +11,17 @@
     ],
     "browser_action": {
         "default_popup": "popup.html",
-        "default_title": "Press"
+        "default_title": "EZ-Phrase",
+        "default_icon": "EzIcon.png"
+    },
+    "background":{
+        "scripts": ["background.js"],
+        "persistant": false
     },
     "permissions": [
         "clipboardRead",
         "clipboardWrite",
-        "storage" 
+        "storage",
+        "tabs" 
     ] 
 }
