@@ -14,10 +14,6 @@
         "default_title": "EZ-Phrase",
         "default_icon": "EzIcon.png"
     },
-    "background":{
-        "scripts": ["background.js"],
-        "persistant": false
-    },
     "permissions": [
         "clipboardRead",
         "clipboardWrite",
