@@ -30,15 +30,26 @@ document.addEventListener('DOMContentLoaded', function(){
     }
     document.getElementById("list").addEventListener("click", function(e){
         if(e.target && e.target.nodeName == "LI"){
-            console.log(e.target.id + "was clicked");
+            console.log(e.target.id + " was clicked");
             navigator.clipboard.writeText(e.target.innerHTML);
             document.getElementById("CopyAlert").style.display = 'inline';
             setTimeout(function(){
                 document.getElementById("CopyAlert").style.display = 'none';
             }, 1500);
         }
-    })
-})
+        /*if(e.target && e.target.nodeName == "BUTTON"){
+            chrome.storage.sync.remove({list:['boolhouse']}, function(data){
+                console.log(data.list);
+            })
+            console.log(e.target.id + " button pressed");
+            var num = e.target.id.match(/\d+/g);
+            var item = document.getElementById(e.target.id);
+            var liHost = document.getElementById('listItem'+num);
+            document.getElementById('listItem'+num).removeChild(item);
+            document.getElementById('list').removeChild(liHost);
+        }*/
+    });
+});
 //displays a list of the things in the array, need to make it so that the array is stored using the chrome.storage API
 function makeList(){ 
     chrome.storage.sync.get({list:['bool house', 'liggy', 'thoom', 'shim ravage',
@@ -48,6 +59,12 @@ function makeList(){
             listItem = document.createElement('li');
             listItem.appendChild(document.createTextNode(tempList[i]));
             listItem.setAttribute('id', 'listItem'+lastId);
+            
+            /*var removeBtn = document.createElement('button');
+            removeBtn.append(document.createTextNode("R"));
+            removeBtn.setAttribute('id', 'removeBtn'+lastId);
+            listItem.appendChild(removeBtn);*/
+
             lastId +=1;
             document.getElementById('list').appendChild(listItem);
         }
