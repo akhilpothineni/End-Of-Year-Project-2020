@@ -39,7 +39,9 @@
     cursor: pointer;
     display: inline-block;
 }
-
+body{
+    max-width: 200px;
+}
 ul{
     margin: 0;
     padding: 0;

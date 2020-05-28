@@ -72,7 +72,7 @@ function makeList(){
 }
 function updateList(addValue){
     var listItem = document.createElement('li');
-    listItem.innerHTML = addValue;
+    listItem.appendChild(document.createTextNode(addValue));
     document.getElementById('list').appendChild(listItem);
 }
 //similar to the function above but displays the list in the form of a table
