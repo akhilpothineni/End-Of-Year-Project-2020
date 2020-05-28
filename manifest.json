@@ -6,7 +6,7 @@
     "browser_action": {
         "default_popup": "popup.html",
         "default_title": "EZ-Phrase",
-        "default_icon": "house-key.png"
+        "default_icon": "mung-dab.png"
     },
     "browser_specific_settings": {
         "gecko": {
