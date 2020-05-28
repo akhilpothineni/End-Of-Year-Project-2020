@@ -6,7 +6,7 @@
     "browser_action": {
         "default_popup": "popup.html",
         "default_title": "EZ-Phrase",
-        "default_icon": "EzIcon.png"
+        "default_icon": "mung-dab.png"
     },
     "permissions": [
         "clipboardWrite",
