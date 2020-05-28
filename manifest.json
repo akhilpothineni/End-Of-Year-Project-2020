@@ -1,6 +1,6 @@
 {
     "name": "EZ-Phrase",
-    "version": "1.0",
+    "version": "1.0.1",
     "description": "Pick phrases that you use most often and have them ready to be copied.",
     "manifest_version": 2,
     "browser_action": {
