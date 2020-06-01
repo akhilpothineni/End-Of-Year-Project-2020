@@ -66,7 +66,7 @@ function makeList(){
             listItem.setAttribute('id', 'listItem'+lastId);
             
             var removeBtn = document.createElement('button');
-            removeBtn.append(document.createTextNode("R"));
+            removeBtn.append(document.createTextNode("X"));
             removeBtn.setAttribute('id', 'removeBtn'+lastId);
             listItem.appendChild(removeBtn);
 
