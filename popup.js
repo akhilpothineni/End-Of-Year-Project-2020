@@ -29,7 +29,8 @@ document.addEventListener('DOMContentLoaded', function(){
         if(e.target && e.target.nodeName == "LI"){
             //if it was a 'li' it copies the text to the clipboard
             console.log(e.target.id + " was clicked");
-            navigator.clipboard.writeText(e.target.innerHTML);
+            var string = e.target.innerText;
+            navigator.clipboard.writeText(string.substring(0, string.length -1));
             document.getElementById("CopyAlert").style.display = 'inline';
             setTimeout(function(){
                 document.getElementById("CopyAlert").style.display = 'none';
