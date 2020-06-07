@@ -6,20 +6,16 @@ var lastId = 0;
 
 //Button Click Checking
 document.addEventListener('DOMContentLoaded', function(){
-    // document.getElementById('boolHouse').onclick = function () {
-    //     chrome.storage.sync.get('myLine', function(data){
-    //         navigator.clipboard.writeText(data.myLine);
-    //         // alert(data.myLine);
-    //     });
-    //     //copies the value in the input field to the clipboard
-    // }
     document.getElementById('save').onclick = function () {
+        //save NEW user values to the chrome.storage
         var value = document.getElementById('saveLine').value;
-        if(value !== ""){   
-            chrome.storage.sync.get({list:['bool house', 'liggy', 'thoom', 'shim ravage', 
-            'yeah unfortunately android studio was very hard to learn, and so I could only produce a hello world main page']}, function(data){
+        if(value !== ""){
+            //checks for empty strings   
+            chrome.storage.sync.get({list:[]}, function(data){
+                //stores value to chrome.storage array
                 var array = data.list;
                 array.push(value);
+                console.log(array.length);
                 chrome.storage.sync.set({list:array}, function(){
                     console.log("added to list");
                 });
@@ -29,44 +25,54 @@ document.addEventListener('DOMContentLoaded', function(){
         }
     }
     document.getElementById("list").addEventListener("click", function(e){
+        //checks to see if a list element was clicked
         if(e.target && e.target.nodeName == "LI"){
+            //if it was a 'li' it copies the text to the clipboard
             console.log(e.target.id + " was clicked");
-            navigator.clipboard.writeText(e.target.innerHTML);
+            var string = e.target.innerText;
+            navigator.clipboard.writeText(string.substring(0, string.length -1));
             document.getElementById("CopyAlert").style.display = 'inline';
             setTimeout(function(){
                 document.getElementById("CopyAlert").style.display = 'none';
             }, 1500);
         }
-        /*if(e.target && e.target.nodeName == "BUTTON"){
-            chrome.storage.sync.remove({list:['boolhouse']}, function(data){
-                console.log(data.list);
-            })
-            console.log(e.target.id + " button pressed");
-            var num = e.target.id.match(/\d+/g);
-            var item = document.getElementById(e.target.id);
-            var liHost = document.getElementById('listItem'+num);
+        //checks to see if the remove button was clicked
+        if(e.target && e.target.nodeName == "BUTTON"){
+            var num = e.target.id.match(/\d+/g); //gets the number ID
+            var item = document.getElementById(e.target.id); //gets the button
+            var liHost = document.getElementById('listItem'+num); //gets the list element
+            chrome.storage.sync.get({list:[]}, function(data){
+                //removes the value from the chrome.storage array
+                var array = data.list;
+                var tempString = liHost.innerText;
+                var index = array.indexOf(tempString);
+                if (index > -1){
+                    array.splice(index, 1);
+                }
+                chrome.storage.sync.set({list:array});
+            });
+            //remove the elements from the list
             document.getElementById('listItem'+num).removeChild(item);
             document.getElementById('list').removeChild(liHost);
-        }*/
+        }
     });
 });
 //displays a list of the things in the array, need to make it so that the array is stored using the chrome.storage API
 function makeList(){ 
-    chrome.storage.sync.get({list:['bool house', 'liggy', 'thoom', 'shim ravage',
-    'yeah unfortunately android studio was very hard to learn, and so I could only produce a hello world main page']}, function(data){
+    chrome.storage.sync.get({list:[]}, function(data){
         var tempList = data.list;
         for (let i = 0; i < tempList.length; i++) {
             listItem = document.createElement('li');
             listItem.appendChild(document.createTextNode(tempList[i]));
             listItem.setAttribute('id', 'listItem'+lastId);
             
-            /*var removeBtn = document.createElement('button');
-            removeBtn.append(document.createTextNode("R"));
+            var removeBtn = document.createElement('button');
+            removeBtn.append(document.createTextNode("X"));
             removeBtn.setAttribute('id', 'removeBtn'+lastId);
-            listItem.appendChild(removeBtn);*/
+            listItem.appendChild(removeBtn);
 
             lastId +=1;
-            document.getElementById('list').appendChild(listItem);
+            document.getElementById('list').appendChild(listItem); 
         }
     });
 }
@@ -89,6 +95,7 @@ function makeTable(){
     table.appendChild(tableBody);
     document.body.appendChild(table);
 }
+//removes the text in the enter field so that the user can add more
 function eraseText() {
     document.getElementById("saveLine").value = "";
 }

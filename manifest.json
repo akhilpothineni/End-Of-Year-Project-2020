@@ -1,6 +1,6 @@
 {
     "name": "EZ-Phrase",
-    "version": "1.0.1",
+    "version": "1.1",
     "description": "Pick phrases that you use most often and have them ready to be copied.",
     "manifest_version": 2,
     "browser_action": {
@@ -8,8 +8,13 @@
         "default_title": "EZ-Phrase",
         "default_icon": "mung-dab.png"
     },
+    "background":{
+        "scripts": ["background.js"],
+        "persistant": false
+    },
     "permissions": [
         "clipboardWrite",
-        "storage"
+        "storage",
+        "tabs" 
     ] 
 }

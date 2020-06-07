@@ -16,7 +16,8 @@
     font-size: 10px;
     cursor: pointer;
     background-color: aquamarine;
-    position: relative;    
+    position: relative;
+    font-family: 'Open Sans', sans-serif;    
 }
 
 #addbutton {
@@ -53,10 +54,19 @@ ul li {
     font-size: 13px;
     transition: 0.2s;
     list-style-type: none;
+    font-family: 'Open Sans', sans-serif;
 }
 button{
     cursor: pointer;
-    
+    width: 15vw;
+    height: 15vw;
+    font-family: 'Open Sans', sans-serif;
+    color: red;
+    border: none;
+}
+#saveLine{
+    font-family: 'Open Sans', sans-serif;
+    color: black;
 }
 
 #CopyAlert{
